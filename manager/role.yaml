@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: manager
+rules:
+  - apiGroups: [""]
+    resources: [configmaps]
+    resourceNames: [manager-config]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [coordination.k8s.io]
+    resources: [leases]
+    resourceNames: [db9c8771.cnpg.io]
+    verbs:
+      - get
+      - update
+  - apiGroups: [""]
+    resources: [events]
+    verbs:
+      - create

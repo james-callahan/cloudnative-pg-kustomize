@@ -1,0 +1,110 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cloudnative-pg:manager
+rules:
+  - apiGroups: [""]
+    resources: [configmaps]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [""]
+    resources: [nodes]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [""]
+    resources: [persistentvolumeclaims]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [""]
+    resources: [pods]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [""]
+    resources: [secrets]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [""]
+    resources: [serviceaccounts]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [""]
+    resources: [services]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [apps]
+    resources: [deployments]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [batch]
+    resources: [jobs]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [policy]
+    resources: [poddisruptionbudgets]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [postgresql.cnpg.io]
+    resources:
+      - clusterimagecatalogs
+      - imagecatalogs
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [postgresql.cnpg.io]
+    resources:
+      - backups
+      - clusters
+      - poolers
+      - scheduledbackups
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [postgresql.cnpg.io]
+    resources:
+      - backups/status
+      - clusters/status
+      - poolers/status
+      - scheduledbackups/status
+    verbs:
+      - get
+      - watch
+  - apiGroups: [rbac.authorization.k8s.io]
+    resources: [rolebindings]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [rbac.authorization.k8s.io]
+    resources: [roles]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [snapshot.storage.k8s.io]
+    resources: [volumesnapshots]
+    verbs:
+      - get
+      - list
+      - watch

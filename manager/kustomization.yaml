@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/component: manager
+resources:
+  - clusterrole.yaml
+  - deployment.yaml
+  - lease.yaml
+  - rbac.yaml
+  - role.yaml
+  - service.yaml
+  - mutatingwebhookconfiguration.yaml
+  - validatingwebhookconfiguration.yaml
+configMapGenerator:
+  - name: manager-config
+    options:
+      disableNameSuffixHash: true
+  - name: default-monitoring
+    options:
+      disableNameSuffixHash: true
+      labels:
+        cnpg.io/reload: ""
+    files:
+      - queries=files/queries.yaml
+images:
+  - name: ghcr.io/cloudnative-pg/cloudnative-pg
+    newTag: 1.24.0
+replacements:
+  - source:
+      kind: Deployment
+      name: manager
+      fieldPath: spec.template.spec.containers.[name=manager].image
+    targets:
+      - select:
+          kind: Deployment
+          name: manager
+        fieldPaths:
+          - spec.template.spec.containers.[name=manager].env.[name=OPERATOR_IMAGE_NAME].value

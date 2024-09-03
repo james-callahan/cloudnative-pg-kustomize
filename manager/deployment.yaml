@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manager
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: manager
+          command:
+            - /manager
+          args:
+            - controller
+            - --leader-elect
+            - --config-map-name=manager-config
+            - --webhook-port=9443
+          image: ghcr.io/cloudnative-pg/cloudnative-pg
+          env:
+            - name: OPERATOR_IMAGE_NAME
+              value: ghcr.io/cloudnative-pg/cloudnative-pg
+            - name: OPERATOR_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: MONITORING_QUERIES_CONFIGMAP
+              value: default-monitoring
+          ports:
+            - containerPort: 8080
+              name: metrics
+              protocol: TCP
+            - containerPort: 9443
+              name: webhook
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /readyz
+              port: 9443
+              scheme: HTTPS
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 9443
+              scheme: HTTPS
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            readOnlyRootFilesystem: true
+            runAsGroup: 10001
+            runAsUser: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - mountPath: /controller
+              name: scratch-data
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: manager
+      terminationGracePeriodSeconds: 10
+      volumes:
+        - name: scratch-data
+          emptyDir: {}
+        - name: webhook-certificates
+          secret:
+            secretName: cnpg-webhook-cert
