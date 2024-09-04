@@ -1,0 +1,93 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cloudnative-pg:manager-edit
+rules:
+  - apiGroups: [""]
+    resources: [configmaps]
+    verbs:
+      - create
+      - delete
+  - apiGroups: [""]
+    resources: [events]
+    verbs:
+      - create
+      - patch
+  - apiGroups: [""]
+    resources: [persistentvolumeclaims]
+    verbs:
+      - create
+      - delete
+      - patch
+  - apiGroups: [""]
+    resources: [pods]
+    verbs:
+      - create
+      - delete
+      - patch
+  - apiGroups: [""]
+    resources: [pods/exec]
+    verbs:
+      - create
+  - apiGroups: [""]
+    resources: [secrets]
+    verbs:
+      - create
+      - delete
+      - patch
+  - apiGroups: [""]
+    resources: [serviceaccounts]
+    verbs:
+      - create
+      - patch
+      - delete
+  - apiGroups: [""]
+    resources: [services]
+    verbs:
+      - create
+      - delete
+      - update
+  - apiGroups: [batch]
+    resources: [jobs]
+    verbs:
+      - create
+      - delete
+      - patch
+  - apiGroups: [policy]
+    resources: [poddisruptionbudgets]
+    verbs:
+      - create
+      - delete
+      - patch
+  - apiGroups: [postgresql.cnpg.io]
+    resources:
+      - clusters
+      - poolers
+      - scheduledbackups
+    verbs:
+      - patch
+  - apiGroups: [postgresql.cnpg.io]
+    resources:
+      - backups
+    verbs:
+      - delete
+  - apiGroups: [postgresql.cnpg.io]
+    resources:
+      - backups/status
+      - clusters/status
+      - poolers/status
+      - scheduledbackups/status
+    verbs:
+      - patch
+      - update
+  - apiGroups: [rbac.authorization.k8s.io]
+    resources: [rolebindings]
+    verbs:
+      - create
+      - delete
+  - apiGroups: [rbac.authorization.k8s.io]
+    resources: [roles]
+    verbs:
+      - create
+      - delete
+      - patch

@@ -1,0 +1,4 @@
+images:
+  - group: postgresql.cnpg.io
+    kind: ImageCatalog
+    path: spec/images[]/image

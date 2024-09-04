@@ -1,0 +1,80 @@
+nameReference:
+  - kind: ConfigMap
+    version: v1
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/volumes/configMap/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/containers/env/valueFrom/configMapKeyRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/initContainers/env/valueFrom/configMapKeyRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/containers/envFrom/configMapRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/initContainers/envFrom/configMapRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/volumes/projected/sources/configMap/name
+
+  - kind: Secret
+    version: v1
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/pgbouncer/authQuerySecret/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/volumes/secret/secretName
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/containers/env/valueFrom/secretKeyRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/initContainers/env/valueFrom/secretKeyRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/containers/envFrom/secretRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/initContainers/envFrom/secretRef/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/imagePullSecrets/name
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/volumes/projected/sources/secret/name
+
+  - kind: ServiceAccount
+    version: v1
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/serviceAccountName
+
+  - kind: PersistentVolumeClaim
+    version: v1
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/volumes/persistentVolumeClaim/claimName
+
+  - kind: PriorityClass
+    version: v1
+    group: scheduling.k8s.io
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/template/spec/priorityClassName
+
+  - group: postgresql.cnpg.io
+    version: v1
+    kind: Cluster
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Pooler
+        path: spec/cluster/name

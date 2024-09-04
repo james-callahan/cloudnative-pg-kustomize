@@ -1,0 +1,168 @@
+nameReference:
+  - kind: ConfigMap
+    version: v1
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/initdb/postInitApplicationSQLRefs/configMapRefs/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/initdb/postInitSQLRefs/configMapRefs/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/initdb/postInitTemplateSQLRefs/configMapRefs/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/env/valueFrom/configMapKeyRef/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/envFrom/configMapRef/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/monitoring/customQueriesConfigMap[]/name
+
+  - kind: Secret
+    version: v1
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/azureCredentials/connectionString/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/azureCredentials/storageAccount/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/azureCredentials/storageKey/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/azureCredentials/storageSasToken/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/endpointCA/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/googleCredentials/applicationCredentials/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/s3Credentials/accessKeyId/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/s3Credentials/region/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/s3Credentials/secretAccessKey/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/backup/barmanObjectStore/s3Credentials/sessionToken/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/initdb/postInitApplicationSQLRefs/secretRefs/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/initdb/postInitSQLRefs/secretRefs/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/initdb/postInitTemplateSQLRefs/secretRefs/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/init/secret/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/pg_basebackup/secret/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/recovery/backup/endpointCA/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/recovery/secret/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/certificates/clientCASecret
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/certificates/replicationTLSSecret
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/certificates/serverCASecret
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/certificates/serverTLSSecret
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/env/valueFrom/secretKeyRef/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/envFrom/secretRef/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/azureCredentials/connectionString/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/azureCredentials/storageAccount/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/azureCredentials/storageKey/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/azureCredentials/storageSasToken/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/endpointCA/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/googleCredentials/applicationCredentials/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/s3Credentials/accessKeyId/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/s3Credentials/region/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/s3Credentials/secretAccessKey/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/barmanObjectStore/s3Credentials/sessionToken/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/password/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/sslCert/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/sslKey/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/externalClusters[]/sslRootCert/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/imagePullSecrets[]/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/managed/roles[]/passwordSecret
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/monitoring/customQueriesSecret[]/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/postgresql/ldap/bindSearchAuth/bindPassword/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/projectedVolumeTemplate/sources[]/secret/name
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/superuserSecret/name
+
+  - group: postgresql.cnpg.io
+    version: v1
+    kind: Backup
+    fieldSpecs:
+      - group: postgresql.cnpg.io
+        kind: Cluster
+        path: spec/bootstrap/recovery/backup/name
+
+images:
+  - group: postgresql.cnpg.io
+    kind: Cluster
+    path: spec/imageName
