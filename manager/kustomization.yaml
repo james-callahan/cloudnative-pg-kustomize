@@ -6,6 +6,7 @@ resources:
   - clusterrole.yaml
   - deployment.yaml
   - lease.yaml
+  - pdb.yaml
   - rbac.yaml
   - role.yaml
   - service.yaml
