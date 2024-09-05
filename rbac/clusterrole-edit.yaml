@@ -97,3 +97,7 @@ rules:
       - create
       - delete
       - patch
+  - apiGroups: [snapshot.storage.k8s.io]
+    resources: [volumesnapshots]
+    verbs:
+      - create
