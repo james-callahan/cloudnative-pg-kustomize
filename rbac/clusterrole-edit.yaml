@@ -53,6 +53,12 @@ rules:
       - create
       - delete
       - patch
+  - apiGroups: [monitoring.coreos.com]
+    resources: [podmonitors]
+    verbs:
+      - create
+      - delete
+      - patch
   - apiGroups: [policy]
     resources: [poddisruptionbudgets]
     verbs:

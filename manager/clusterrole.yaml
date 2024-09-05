@@ -58,6 +58,12 @@ rules:
       - get
       - list
       - watch
+  - apiGroups: [monitoring.coreos.com]
+    resources: [podmonitors]
+    verbs:
+      - get
+      - list
+      - watch
   - apiGroups: [policy]
     resources: [poddisruptionbudgets]
     verbs:
