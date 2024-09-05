@@ -27,7 +27,8 @@ rules:
       - get
       - list
       - watch
-  - apiGroups: [""]
+  - # XXX: https://github.com/cloudnative-pg/cloudnative-pg/issues/5445
+    apiGroups: [""]
     resources: [secrets]
     verbs:
       - get
