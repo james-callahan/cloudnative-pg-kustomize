@@ -5,6 +5,7 @@ commonLabels:
   app.kubernetes.io/component: manager
 resources:
   - clusterrole.yaml
+  - clusterrole-edit.yaml
   - deployment.yaml
   - lease.yaml
   - pdb.yaml
