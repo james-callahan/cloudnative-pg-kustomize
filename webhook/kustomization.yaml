@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+  - certificate.yaml
+patches:
+  - patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: manager
+      spec:
+        template:
+          spec:
+            containers:
+              - name: manager
+                env:
+                  - # This env var is required to have the daemon *not* try to manage it's own CRD
+                    # It also forces it to use `apiserver.crt` and `apiserver.key`
+                    name: WEBHOOK_CERT_DIR
+                    value: /run/secrets/cnpg.io/webhook
+                volumeMounts:
+                  - mountPath: /run/secrets/cnpg.io/webhook/apiserver.crt
+                    name: webhook-certificates
+                    subPath: tls.crt
+                    readOnly: true
+                  - mountPath: /run/secrets/cnpg.io/webhook/apiserver.key
+                    name: webhook-certificates
+                    subPath: tls.key
+                    readOnly: true
+  - target:
+      group: admissionregistration.k8s.io
+    patch: |
+      apiVersion: dummy
+      kind: dummy
+      metadata:
+        name: cloudnative-pg
+        annotations:
+          cert-manager.io/inject-ca-from: cloudnative-pg/cnpg-webhook-service
