@@ -7,7 +7,7 @@ resources:
   - ClusterImageCatalog.yaml
 images:
   - name: ghcr.io/cloudnative-pg/postgis:12
-    newTag: 12-3.4-70@sha256:6ff289ef8642d5a0c0660ec9fca04213b7407160d3ea9237e85a707a77205b9f
+    newTag: 12-3.4-70@sha256:c6a2cab1b3e467288e3aab36aa6a420a183006dc866cd7097769d4cf6bd02726
   - name: ghcr.io/cloudnative-pg/postgis:13
     newTag: 13-3.4-70@sha256:b64a3e80b1ca979682b33308a5c01249f5b13e9478cfec9894fb6b88b379f803
   - name: ghcr.io/cloudnative-pg/postgis:14
