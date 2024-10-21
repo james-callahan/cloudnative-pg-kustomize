@@ -17,4 +17,4 @@ images:
   - name: ghcr.io/cloudnative-pg/postgis:16
     newTag: 16-3.4-62@sha256:6556a0dd936628bb0971443f3c3f3ef9ff41f23123c595e7496a0eafc54a0de4
   - name: ghcr.io/cloudnative-pg/postgis:17
-    newTag: 17-master-2@sha256:f59183f430b0a0ea9dd3c743c1fb0c2ac4b13726ebd22e173e385c5aec8b0eed
+    newTag: 17-master-2@sha256:7d562f3fb4ad59fb0bebb33a69f69ee3084f63c1bbef811b2a1e2dc9b3809cc5
