@@ -1,3 +1,13 @@
+commonAnnotations:
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: true
+    path: serviceTemplate/metadata/annotations
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: true
+    path: spec/template/metadata/annotations
+
 commonLabels:
   - group: postgresql.cnpg.io
     kind: Pooler
