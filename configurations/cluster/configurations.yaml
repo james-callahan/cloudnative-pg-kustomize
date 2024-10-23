@@ -1,3 +1,15 @@
+commonAnnotations:
+  - group: postgresql.cnpg.io
+    kind: Cluster
+    create: true
+    path: spec/inheritedMetadata/annotations
+
+commonLabels:
+  - group: postgresql.cnpg.io
+    kind: Cluster
+    create: true
+    path: spec/inheritedMetadata/labels
+
 nameReference:
   - kind: ConfigMap
     version: v1
