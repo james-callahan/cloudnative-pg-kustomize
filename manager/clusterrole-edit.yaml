@@ -46,7 +46,14 @@ rules:
     verbs:
       - create
       - delete
+      - patch
       - update
+  - apiGroups: [apps]
+    resources: [deployments]
+    verbs:
+      - create
+      - delete
+      - patch
   - apiGroups: [batch]
     resources: [jobs]
     verbs:
