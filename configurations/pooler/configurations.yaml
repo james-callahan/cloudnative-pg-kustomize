@@ -1,3 +1,47 @@
+commonLabels:
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: true
+    path: spec/serviceTemplate/metadata/labels
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: true
+    path: spec/serviceTemplate/spec/selector
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: true
+    path: spec/template/metadata/labels
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: false
+    path: spec/template/spec/affinity/podAffinity/preferredDuringSchedulingIgnoredDuringExecution/podAffinityTerm/labelSelector/matchLabels
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: false
+    path: spec/template/spec/affinity/podAffinity/requiredDuringSchedulingIgnoredDuringExecution/labelSelector/matchLabels
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: false
+    path: spec/template/spec/affinity/podAntiAffinity/preferredDuringSchedulingIgnoredDuringExecution/podAffinityTerm/labelSelector/matchLabels
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: false
+    path: spec/template/spec/affinity/podAntiAffinity/requiredDuringSchedulingIgnoredDuringExecution/labelSelector/matchLabels
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: false
+    path: spec/template/spec/topologySpreadConstraints/labelSelector/matchLabels
+
+templateLabels:
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: true
+    path: spec/serviceTemplate/metadata/labels
+  - group: postgresql.cnpg.io
+    kind: Pooler
+    create: true
+    path: spec/template/metadata/labels
+
 nameReference:
   - kind: ConfigMap
     version: v1
