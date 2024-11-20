@@ -7,14 +7,14 @@ resources:
   - ClusterImageCatalog.yaml
 images:
   - name: ghcr.io/cloudnative-pg/postgis:12
-    newTag: 12-3.5-18@sha256:8b58537c167ed41a1f4af4d2c33fc2510afc0ac79b65e0193e6f211c62bc883b
+    newTag: 17-3.5-18@sha256:637117a054664e2c0315c251c61745dd7b50b7a67815ed8e1b09ae40d358aaff
   - name: ghcr.io/cloudnative-pg/postgis:13
-    newTag: 13-3.5-18@sha256:71c4745b50cc40c4efdfc87c7fa82c0490ecf79a4ace9c4320c9c7284ccc8615
+    newTag: 17-3.5-18@sha256:637117a054664e2c0315c251c61745dd7b50b7a67815ed8e1b09ae40d358aaff
   - name: ghcr.io/cloudnative-pg/postgis:14
-    newTag: 14-3.5-18@sha256:f58bbff55267c658ea346a71f805f32905377cd549fd71ebe0c11aeda74dfb15
+    newTag: 17-3.5-18@sha256:637117a054664e2c0315c251c61745dd7b50b7a67815ed8e1b09ae40d358aaff
   - name: ghcr.io/cloudnative-pg/postgis:15
-    newTag: 15-3.5-18@sha256:7af27a218e4df8af8dc1b228ccf22e6ed94910e2fc13a10378452dae8222d886
+    newTag: 17-3.5-18@sha256:637117a054664e2c0315c251c61745dd7b50b7a67815ed8e1b09ae40d358aaff
   - name: ghcr.io/cloudnative-pg/postgis:16
-    newTag: 16-3.5-18@sha256:a78e4c01e64fdb8b28464394220407523669275d61f4db6a90c13fce63a8d482
+    newTag: 17-3.5-18@sha256:637117a054664e2c0315c251c61745dd7b50b7a67815ed8e1b09ae40d358aaff
   - name: ghcr.io/cloudnative-pg/postgis:17
     newTag: 17-3.5-18@sha256:637117a054664e2c0315c251c61745dd7b50b7a67815ed8e1b09ae40d358aaff
