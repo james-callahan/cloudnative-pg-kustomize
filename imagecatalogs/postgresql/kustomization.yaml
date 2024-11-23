@@ -9,7 +9,7 @@ images:
   - name: ghcr.io/cloudnative-pg/postgresql:12
     newTag: 12.21-1-bullseye@sha256:5193079c6d6fe3d81fba5bc762a3506192d3011b5107a606e749d24d2e481aca
   - name: ghcr.io/cloudnative-pg/postgresql:13
-    newTag: 13.17-1-bullseye@sha256:882e25868fbf81b2d8e5127c529bb0642149763fe4e209c504b8096a820c1daa
+    newTag: 13.18-1-bullseye@sha256:94e796b29785ae85549b4cf2b07fd72fce81c52957a719500fca33cbd91fd59d
   - name: ghcr.io/cloudnative-pg/postgresql:14
     newTag: 14.14-1-bullseye@sha256:c6e3811a6fdc1d4d2bab1b2dbf891ace3b72e0d5684161082d376d9f036b032f
   - name: ghcr.io/cloudnative-pg/postgresql:15
