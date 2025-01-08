@@ -1495,6 +1495,12 @@ spec:
                   initdb:
                     description: Bootstrap the cluster via initdb
                     properties:
+                      builtinLocale:
+                        description: |-
+                          Specifies the locale name when the builtin provider is used.
+                          This option requires `localeProvider` to be set to `builtin`.
+                          Available from PostgreSQL 17.
+                        type: string
                       dataChecksums:
                         description: |-
                           Whether the `-k` option should be passed to initdb,
@@ -1508,6 +1514,18 @@ spec:
                         description: The value to be passed as option `--encoding`
                           for initdb (default:`UTF8`)
                         type: string
+                      icuLocale:
+                        description: |-
+                          Specifies the ICU locale when the ICU provider is used.
+                          This option requires `localeProvider` to be set to `icu`.
+                          Available from PostgreSQL 15.
+                        type: string
+                      icuRules:
+                        description: |-
+                          Specifies additional collation rules to customize the behavior of the default collation.
+                          This option requires `localeProvider` to be set to `icu`.
+                          Available from PostgreSQL 16.
+                        type: string
                       import:
                         description: |-
                           Bootstraps the new cluster by importing data from an existing PostgreSQL
@@ -1515,6 +1533,24 @@ spec:
                         properties:
                           databases:
                             description: The databases to import
+                            items:
+                              type: string
+                            type: array
+                          pgDumpExtraOptions:
+                            description: |-
+                              List of custom options to pass to the `pg_dump` command. IMPORTANT:
+                              Use these options with caution and at your own risk, as the operator
+                              does not validate their content. Be aware that certain options may
+                              conflict with the operator's intended functionality or design.
+                            items:
+                              type: string
+                            type: array
+                          pgRestoreExtraOptions:
+                            description: |-
+                              List of custom options to pass to the `pg_restore` command. IMPORTANT:
+                              Use these options with caution and at your own risk, as the operator
+                              does not validate their content. Be aware that certain options may
+                              conflict with the operator's intended functionality or design.
                             items:
                               type: string
                             type: array
@@ -1558,6 +1594,10 @@ spec:
                         - source
                         - type
                         type: object
+                      locale:
+                        description: Sets the default collation order and character
+                          classification in the new database.
+                        type: string
                       localeCType:
                         description: The value to be passed as option `--lc-ctype`
                           for initdb (default:`C`)
@@ -1565,6 +1605,11 @@ spec:
                       localeCollate:
                         description: The value to be passed as option `--lc-collate`
                           for initdb (default:`C`)
+                        type: string
+                      localeProvider:
+                        description: |-
+                          This option sets the locale provider for databases created in the new cluster.
+                          Available from PostgreSQL 16.
                         type: string
                       options:
                         description: |-
@@ -1771,6 +1816,16 @@ spec:
                         minimum: 1
                         type: integer
                     type: object
+                    x-kubernetes-validations:
+                    - message: builtinLocale is only available when localeProvider
+                        is set to `builtin`
+                      rule: '!has(self.builtinLocale) || self.localeProvider == ''builtin'''
+                    - message: icuLocale is only available when localeProvider is
+                        set to `icu`
+                      rule: '!has(self.icuLocale) || self.localeProvider == ''icu'''
+                    - message: icuRules is only available when localeProvider is set
+                        to `icu`
+                      rule: '!has(self.icuRules) || self.localeProvider == ''icu'''
                   pg_basebackup:
                     description: |-
                       Bootstrap the cluster taking a physical backup of another compatible
@@ -2878,6 +2933,26 @@ spec:
                       - key
                       type: object
                       x-kubernetes-map-type: atomic
+                    plugin:
+                      description: |-
+                        The configuration of the plugin that is taking care
+                        of WAL archiving and backups for this external cluster
+                      properties:
+                        enabled:
+                          default: true
+                          description: Enabled is true if this plugin will be used
+                          type: boolean
+                        name:
+                          description: Name is the plugin name
+                          type: string
+                        parameters:
+                          additionalProperties:
+                            type: string
+                          description: Parameters is the configuration of the plugin
+                          type: object
+                      required:
+                      - name
+                      type: object
                     sslCert:
                       description: |-
                         The reference to an SSL certificate to be used to connect to this
@@ -3889,6 +3964,10 @@ spec:
                     PluginConfiguration specifies a plugin that need to be loaded for this
                     cluster to be reconciled
                   properties:
+                    enabled:
+                      default: true
+                      description: Enabled is true if this plugin will be used
+                      type: boolean
                     name:
                       description: Name is the plugin name
                       type: string
@@ -4049,6 +4128,21 @@ spec:
                     description: Configuration of the PostgreSQL synchronous replication
                       feature
                     properties:
+                      dataDurability:
+                        default: required
+                        description: |-
+                          If set to "required", data durability is strictly enforced. Write operations
+                          with synchronous commit settings (`on`, `remote_write`, or `remote_apply`) will
+                          block if there are insufficient healthy replicas, ensuring data persistence.
+                          If set to "preferred", data durability is maintained when healthy replicas
+                          are available, but the required number of instances will adjust dynamically
+                          if replicas become unavailable. This setting relaxes strict durability enforcement
+                          to allow for operational continuity. This setting is only applicable if both
+                          `standbyNamesPre` and `standbyNamesPost` are unset (empty).
+                        enum:
+                        - required
+                        - preferred
+                        type: string
                       maxStandbyNamesFromCluster:
                         description: |-
                           Specifies the maximum number of local cluster pods that can be
@@ -4093,6 +4187,12 @@ spec:
                     - method
                     - number
                     type: object
+                    x-kubernetes-validations:
+                    - message: dataDurability set to 'preferred' requires empty 'standbyNamesPre'
+                        and empty 'standbyNamesPost'
+                      rule: self.dataDurability!='preferred' || ((!has(self.standbyNamesPre)
+                        || self.standbyNamesPre.size()==0) && (!has(self.standbyNamesPost)
+                        || self.standbyNamesPost.size()==0))
                 type: object
               primaryUpdateMethod:
                 default: restart
@@ -6106,6 +6206,13 @@ spec:
                       description: |-
                         OperatorCapabilities are the list of capabilities of the
                         plugin regarding the reconciler
+                      items:
+                        type: string
+                      type: array
+                    restoreJobHookCapabilities:
+                      description: |-
+                        RestoreJobHookCapabilities are the list of capabilities of the
+                        plugin regarding the RestoreJobHook management
                       items:
                         type: string
                       type: array
