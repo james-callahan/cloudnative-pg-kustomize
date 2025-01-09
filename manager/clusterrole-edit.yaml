@@ -35,6 +35,7 @@ rules:
       - create
       - delete
       - patch
+      - update
   - apiGroups: [""]
     resources: [serviceaccounts]
     verbs:
@@ -79,6 +80,13 @@ rules:
       - scheduledbackups
     verbs:
       - patch
+  - apiGroups: [postgresql.cnpg.io]
+    resources:
+      - databases
+      - publications
+      - subscriptions
+    verbs:
+      - update
   - apiGroups: [postgresql.cnpg.io]
     resources:
       - backups
