@@ -88,8 +88,11 @@ rules:
     resources:
       - backups/status
       - clusters/status
+      - databases/status
       - poolers/status
+      - publications/status
       - scheduledbackups/status
+      - subscriptions/status
     verbs:
       - patch
       - update
