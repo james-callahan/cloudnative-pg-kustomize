@@ -42,7 +42,7 @@ patches:
                     value: ghcr.io/cloudnative-pg/postgresql:17.2@sha256:13ee1d8acd9bce3626f2abe6559fc2c092926038d5cd55eff59be2a48c6b176c
 images:
   - name: ghcr.io/cloudnative-pg/cloudnative-pg
-    newTag: 1.25.0@sha256:a27779ed10853ed607659ff9c7c51ae30b6b6c3ce204f58a2bf54c5d25e0e188
+    newTag: 1.25.1@sha256:b5210df46c05bed3c5dbb67d316dece0ed67f4d148acac169416079dc10e4a91
 replacements:
   - source:
       kind: Deployment
