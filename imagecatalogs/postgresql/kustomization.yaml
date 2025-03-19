@@ -6,8 +6,6 @@ resources:
   - ../../configurations/clusterimagecatalog
   - ClusterImageCatalog.yaml
 images:
-  - name: ghcr.io/cloudnative-pg/postgresql:12
-    newTag: 12.22-27-bullseye@sha256:17625bd46e6dd04a370735bc2686bd10c19cf30933e51a75020c4ef3f916e5a9
   - name: ghcr.io/cloudnative-pg/postgresql:13
     newTag: 13.18-29-bullseye@sha256:169220021e0a3c42628d4a1a472dccae32ede2621a2a2a84ce4716c33db003a8
   - name: ghcr.io/cloudnative-pg/postgresql:14
