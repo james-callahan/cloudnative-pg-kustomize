@@ -1,0 +1,13 @@
+commonLabels:
+  - path: spec/selector/matchLabels
+    create: true
+    group: monitoring.coreos.com
+    kind: PodMonitor
+  - path: spec/selector/matchLabels
+    create: true
+    group: monitoring.coreos.com
+    kind: ServiceMonitor
+  - path: spec/targets/ingress/selector/matchLabels
+    create: true
+    group: monitoring.coreos.com
+    kind: Probe

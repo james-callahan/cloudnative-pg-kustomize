@@ -4,10 +4,12 @@ commonLabels:
   app.kubernetes.io/name: cloudnative-pg
   app.kubernetes.io/component: manager
 resources:
+  - ../configurations/prometheus-operator
   - clusterrole.yaml
   - clusterrole-edit.yaml
   - deployment.yaml
   - lease.yaml
+  - monitor.yaml
   - pdb.yaml
   - rbac.yaml
   - role.yaml
