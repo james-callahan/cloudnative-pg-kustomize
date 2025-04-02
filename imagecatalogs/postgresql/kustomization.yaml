@@ -7,12 +7,12 @@ resources:
   - ClusterImageCatalog.yaml
 images:
   - name: ghcr.io/cloudnative-pg/postgresql:13
-    newTag: 13.20-5-bullseye@sha256:9403afadf238d8f21c70c123ea4cecda4fdbf35c3b4495abf8322f530d28044a
+    newTag: 17.4-5-bullseye@sha256:1c78556ba832fe7e8a4e539fcae83a276dcd9cc61cbe4df1e17cafbd282a33f2
   - name: ghcr.io/cloudnative-pg/postgresql:14
-    newTag: 14.17-5-bullseye@sha256:216091f154ff9c9fa956c77593f6dac074e215dd2a754e8af4ff50084485aee3
+    newTag: 17.4-5-bullseye@sha256:1c78556ba832fe7e8a4e539fcae83a276dcd9cc61cbe4df1e17cafbd282a33f2
   - name: ghcr.io/cloudnative-pg/postgresql:15
-    newTag: 15.12-5-bullseye@sha256:2c3b0ddad3406012ddf78e52fbb9161f44266d2c26c941b706c16ab75e0eb58c
+    newTag: 17.4-5-bullseye@sha256:1c78556ba832fe7e8a4e539fcae83a276dcd9cc61cbe4df1e17cafbd282a33f2
   - name: ghcr.io/cloudnative-pg/postgresql:16
-    newTag: 16.8-5-bullseye@sha256:921da8306283f0c2cca34c6ca9dea78a9d65f2aca97c9169791e49790429bc06
+    newTag: 17.4-5-bullseye@sha256:1c78556ba832fe7e8a4e539fcae83a276dcd9cc61cbe4df1e17cafbd282a33f2
   - name: ghcr.io/cloudnative-pg/postgresql:17
     newTag: 17.4-5-bullseye@sha256:1c78556ba832fe7e8a4e539fcae83a276dcd9cc61cbe4df1e17cafbd282a33f2
