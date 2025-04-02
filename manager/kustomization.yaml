@@ -41,7 +41,7 @@ patches:
                 env:
                   - name: POSTGRES_IMAGE_NAME
                     # renovate: datasource=docker
-                    value: ghcr.io/cloudnative-pg/postgresql:17.4@sha256:4ebb83ad6701cf90cd16f4c0b502676238ffdb1169bf27c5ae60e9a5bdc7b925
+                    value: ghcr.io/cloudnative-pg/postgresql:17.4@sha256:0cd9ecf3cc691e8e757ccc74931b95de41fcec8e54c0405df2dc38f3a1741073
 images:
   - name: ghcr.io/cloudnative-pg/cloudnative-pg
     newTag: 1.25.1@sha256:b5210df46c05bed3c5dbb67d316dece0ed67f4d148acac169416079dc10e4a91
