@@ -8,7 +8,7 @@
       "fileMatch": ["(^|/)kustomization.yaml$"],
       "matchStrings": [
         "#\\s?renovate: datasource=docker\\s+[^\\n]*\\s(?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)\\s"
-        ],
+      ],
       "datasourceTemplate": "docker"
     }
   ]
