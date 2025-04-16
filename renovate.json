@@ -3,6 +3,17 @@
   "extends": [
     "config:recommended"
   ],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "ghcr.io/cloudnative-pg/postgis",
+        "ghcr.io/cloudnative-pg/postgresql"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
+  ],
   "regexManagers": [
     {
       "fileMatch": ["(^|/)kustomization.yaml$"],
