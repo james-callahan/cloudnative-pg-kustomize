@@ -3,6 +3,41 @@
   "extends": [
     "config:recommended"
   ],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgis"],
+      "versioning": "regex:^(?<major>\\d+)(-(?<minor>\\d+))?(\\.(?<patch>\\d+))?(-(?<build>\\d+))$",
+      "separateMultipleMajor": true
+    },{
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "versioning": "regex:^(?<major>\\d+)(\\.(?<minor>\\d+))?(-(?<build>\\d+))(-(?<compatibility>.*))?$",
+      "separateMultipleMajor": true
+    },{
+      "description": "Disable major updates for old versions in catalogs",
+      "matchDatasources": ["docker"],
+      "matchFileNames": ["imagecatalogs/**"],
+      "matchPackageNames": [
+        "ghcr.io/cloudnative-pg/postgis",
+        "ghcr.io/cloudnative-pg/postgresql"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },{
+      "description": "Group postgis builds together",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgis"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "postgis-build"
+    },{
+      "description": "Group postgresql builds together",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/cloudnative-pg/postgresql"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "postgresql-build"
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",
