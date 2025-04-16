@@ -91,6 +91,7 @@ rules:
     resources:
       - backups
     verbs:
+      - create
       - delete
   - apiGroups: [postgresql.cnpg.io]
     resources:
