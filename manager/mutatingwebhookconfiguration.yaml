@@ -8,7 +8,6 @@ webhooks:
       service:
         name: cnpg-webhook-service
         path: /mutate-postgresql-cnpg-io-v1-backup
-        port: 443
     failurePolicy: Fail
     name: mbackup.cnpg.io
     rules:
@@ -25,7 +24,6 @@ webhooks:
       service:
         name: cnpg-webhook-service
         path: /mutate-postgresql-cnpg-io-v1-cluster
-        port: 443
     failurePolicy: Fail
     name: mcluster.cnpg.io
     rules:
@@ -41,8 +39,23 @@ webhooks:
     clientConfig:
       service:
         name: cnpg-webhook-service
+        path: /mutate-postgresql-cnpg-io-v1-database
+    failurePolicy: Fail
+    name: mdatabase.cnpg.io
+    rules:
+      - apiGroups: [postgresql.cnpg.io]
+        apiVersions: [v1]
+        operations:
+          - CREATE
+          - UPDATE
+        resources:
+          - databases
+    sideEffects: None
+  - admissionReviewVersions: [v1]
+    clientConfig:
+      service:
+        name: cnpg-webhook-service
         path: /mutate-postgresql-cnpg-io-v1-scheduledbackup
-        port: 443
     failurePolicy: Fail
     name: mscheduledbackup.cnpg.io
     rules:

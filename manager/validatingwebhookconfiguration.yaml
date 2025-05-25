@@ -8,7 +8,6 @@ webhooks:
       service:
         name: cnpg-webhook-service
         path: /validate-postgresql-cnpg-io-v1-backup
-        port: 443
     failurePolicy: Fail
     name: vbackup.cnpg.io
     rules:
@@ -25,7 +24,6 @@ webhooks:
       service:
         name: cnpg-webhook-service
         path: /validate-postgresql-cnpg-io-v1-cluster
-        port: 443
     failurePolicy: Fail
     name: vcluster.cnpg.io
     rules:
@@ -41,10 +39,9 @@ webhooks:
     clientConfig:
       service:
         name: cnpg-webhook-service
-        path: /validate-postgresql-cnpg-io-v1-scheduledbackup
-        port: 443
+        path: /validate-postgresql-cnpg-io-v1-database
     failurePolicy: Fail
-    name: vscheduledbackup.cnpg.io
+    name: vdatabase.cnpg.io
     rules:
       - apiGroups: [postgresql.cnpg.io]
         apiVersions: [v1]
@@ -52,14 +49,13 @@ webhooks:
           - CREATE
           - UPDATE
         resources:
-          - scheduledbackups
+          - databases
     sideEffects: None
   - admissionReviewVersions: [v1]
     clientConfig:
       service:
         name: cnpg-webhook-service
         path: /validate-postgresql-cnpg-io-v1-pooler
-        port: 443
     failurePolicy: Fail
     name: vpooler.cnpg.io
     rules:
@@ -70,4 +66,20 @@ webhooks:
           - UPDATE
         resources:
           - poolers
+    sideEffects: None
+  - admissionReviewVersions: [v1]
+    clientConfig:
+      service:
+        name: cnpg-webhook-service
+        path: /validate-postgresql-cnpg-io-v1-scheduledbackup
+    failurePolicy: Fail
+    name: vscheduledbackup.cnpg.io
+    rules:
+      - apiGroups: [postgresql.cnpg.io]
+        apiVersions: [v1]
+        operations:
+          - CREATE
+          - UPDATE
+        resources:
+          - scheduledbackups
     sideEffects: None
