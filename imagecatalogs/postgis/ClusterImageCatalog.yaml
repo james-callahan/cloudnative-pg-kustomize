@@ -4,8 +4,6 @@ metadata:
   name: postgis
 spec:
   images:
-    - major: 12
-      image: ghcr.io/cloudnative-pg/postgis:12
     - major: 13
       image: ghcr.io/cloudnative-pg/postgis:13
     - major: 14
