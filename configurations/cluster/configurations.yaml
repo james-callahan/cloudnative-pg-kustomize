@@ -152,7 +152,7 @@ nameReference:
         path: spec/imagePullSecrets[]/name
       - group: postgresql.cnpg.io
         kind: Cluster
-        path: spec/managed/roles[]/passwordSecret
+        path: spec/managed/roles[]/passwordSecret/name
       - group: postgresql.cnpg.io
         kind: Cluster
         path: spec/monitoring/customQueriesSecret[]/name
