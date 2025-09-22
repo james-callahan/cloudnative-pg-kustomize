@@ -83,6 +83,7 @@ rules:
       - backups
       - clusters
       - databases
+      - failoverquorums
       - poolers
       - publications
       - scheduledbackups
@@ -96,6 +97,7 @@ rules:
       - backups/status
       - clusters/status
       - databases/status
+      - failoverquorums/status
       - poolers/status
       - publications/status
       - scheduledbackups/status
