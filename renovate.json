@@ -3,9 +3,10 @@
   "extends": [
     "config:recommended"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["(^|/)kustomization.yaml$"],
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)kustomization.yaml$/"],
       "matchStrings": [
         "- github\\.com\\/(?<repoOwner>[^/?#]+)\\/(?<depName>[^/?#]+)(?:\\/[^?#]*)?\\?ref=(?<currentDigest>[a-f0-9]{40})(&[^#&]+)* # branch=(?<currentValue>\\S+)\\n"
       ],
@@ -13,8 +14,6 @@
       "datasourceTemplate": "git-refs",
       "versioningTemplate": "git"
     },
-  ],
-  "customManagers": [
     {
       "customType": "regex",
       "managerFilePatterns": ["/(^|/)kustomization.yaml$/"],
