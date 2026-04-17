@@ -41,7 +41,7 @@ patches:
                 env:
                   - name: PGBOUNCER_IMAGE_NAME
                     # renovate: datasource=docker
-                    value: ghcr.io/cloudnative-pg/pgbouncer:1.25.1@sha256:c829ee1985153e5510b699950630f7bf2877246744f7a2e8b9b6ba0a52b185c0
+                    value: ghcr.io/cloudnative-pg/pgbouncer:1.25.1@sha256:f26dab8d644049458fec2eb631a4b67fa79b6c9f0da02bbdc5f56a5f3255561c
                   - name: POSTGRES_IMAGE_NAME
                     # renovate: datasource=docker
                     value: ghcr.io/cloudnative-pg/postgresql:18.1-system-trixie@sha256:26042ab97ea2554e81b189f15d2af2b6509b8f15654ebc80a1f96b551931513b
