@@ -47,7 +47,7 @@ patches:
                     value: ghcr.io/cloudnative-pg/postgresql:18.3-system-trixie@sha256:83eed1b1712edd8d881e5cf1b989519b8863f123aa9e2232fffaef5afa20a0c3
 images:
   - name: ghcr.io/cloudnative-pg/cloudnative-pg
-    newTag: 1.29.0@sha256:68074486205a33ed41928761e22ad48278c690feebe8316727a1c6b3380f9e5e
+    newTag: 1.29.1@sha256:0dfff19ba7b52ca25851a1010028b6940fff2e233290465af1cfb08a5f3f4661
 replacements:
   - source:
       kind: Deployment
