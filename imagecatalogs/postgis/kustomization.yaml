@@ -4,4 +4,4 @@ commonLabels:
   app.kubernetes.io/name: cloudnative-pg
 resources:
   - ../../configurations/clusterimagecatalog
-  - github.com/cloudnative-pg/postgis-containers/image-catalogs?ref=282fa41dba195957dc1b5c9900b76459068f1151 # branch=main
+  - github.com/cloudnative-pg/postgis-containers/image-catalogs?ref=4259d2d75d1e8839e334b762f2254fdb6f80af60 # branch=main
